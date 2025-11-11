@@ -1,5 +1,6 @@
 import time
 
+
 from db import get_connection
 
 
@@ -16,7 +17,7 @@ def review_medical_record(user_name):
         return
 
 
-    print(f"\n--- Medical Record for {user_name} ---")
+    print(f"\n----Medical Record for patient {user_name} ---")
     print(f"Address: {user[1]} St")
     print(f"Chronic Illness: {user[2] if user[2] else 'None'}")
 
@@ -35,6 +36,7 @@ def review_medical_record(user_name):
 
     conn.close()
 
-# this is for a short delay before returning to main menu
-    print("\nReturning to the main menu in a few secondss...")
-    time.sleep(7) 
+
+
+print("\nReturning to the main menu in a few secondss...")
+time.sleep(7) 
