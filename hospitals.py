@@ -9,29 +9,29 @@ def refer_to_hospital(user_name):
 
 
     issues = [
-        ("Consultation", "General doctor check-up"),
-        ("Pediatry", "Medical care for children"),
-        ("Blood Test", "Basic blood sample analysis"),
-        ("Dental", "Tooth and gum treatments"),
-        ("Eye Care", "Vision testing and treatment") 
+        ("Consultation", "General doctor checkup and conversing with the doctor"),
+        ("Pediatry", "Medical care for children and specialised consultation for them"),
+        ("Blood Test", "Basic blood sample analysis for pathogens and others "),
+        ("Dental", "Tooth and gum treatments together with braces"),
+        ("Eye Care", "Vision testing and treatment together with glasses") 
     ]
 
 
-    print("\nAvailable Medical Services:")
+    print("\n Medical services available at the moment : ")
     for i, (issue, desc) in enumerate(issues, 1):
         print(f"{i}. {issue} - {desc}")
 
 
     try:
-        choice = int(input("Select the type of medical attention you need: "))
+        choice = int(input("Select the type of medical attention you need right now: "))
         medical_issue = issues[choice - 1][0]
     except (ValueError, IndexError):
-        print("Invalid choice.")
+        print("Invalid choice ")
         conn.close()
         return
 
 
-    print("\n--- Available Hospitals ---")
+    print("\n---- Available Hospitals ----")
     cursor.execute('''SELECT h.id, h.name, h.address, h.phone, IFNULL(AVG(r.rating), 0)
                       FROM hospitals h LEFT JOIN reviews r ON h.id = r.hospital_id
                       GROUP BY h.id''')
@@ -46,7 +46,7 @@ def refer_to_hospital(user_name):
         hosp_choice = int(input("Select a hospital: "))
         hospital = hospitals[hosp_choice - 1]
     except (ValueError, IndexError):
-        print("Invalid hospital selection.")
+        print("Invalid hospital selection ")
         conn.close()
         return
 
@@ -59,13 +59,13 @@ def refer_to_hospital(user_name):
 
 
     try:
-        rating = int(input("\nRate this hospital (1–5): "))
+        rating = int(input("\nRate this hospital (1-5): "))
         if 1 <= rating <= 5:
             cursor.execute('INSERT INTO reviews (hospital_id, rating) VALUES (?, ?)', (hospital[0], rating))
         else:
-            print("Invalid rating, skipping review.")
+            print(" Invalid rating, skipping3 this review ")
     except ValueError:
-        print("Invalid input, skipping review.")
+        print(" Invalid input, skipping review ")
 
 
     conn.commit()
