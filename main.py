@@ -1,9 +1,9 @@
-
+#this is the main program that calls all the other functions 
+#adding the necesarry libraries for sql manipulation and time
 import sqlite3
-
 import time
 
-
+#importing all the functions from the other files in teh directory
 from db import init_db, get_connection
 from hospitals import refer_to_hospital
 from records import review_medical_record
@@ -11,22 +11,22 @@ from emergency import send_emergency_alert
 
 
 
-
+#main function
 
 def main():
     
     init_db()
-    print("Welcome to Clinico\n")
-    print("Your Personalised Health direction giver\n")
+    print("_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
+    print("Your own Personalised Health direction giver\n")
 
 
-    name = input("Enter your full name: ")
+    name = input("Please enter your full names: ")
     try:
-        street_number = int(input("Enter your street number (eg: 44,23):"))
+        street_number = int(input("enter your street number (eg: 44,23):"))
     except ValueError:
-        print("Invalid input. Setting street number to 0 ")
+        print("Your input wasnt invalid so by default your street number will be 0 ")
         street_number = 0
-    chronic = input("Do you have any chronic illnesses (eg: asthma, myopia)? If none, type 'None': ")
+    chronic = input("Do you have any chronic illnesses? (eg: asthma, myopia) If you dont have any type 'None': ")
     time.sleep(2)
 
 
@@ -38,7 +38,7 @@ def main():
     conn.close()
 
 
-    
+    #this is the loop to the main interface that will allpw the user to acces the other functions
     while True:
         
         print("\n---------MAIN MENU---------")
@@ -53,7 +53,8 @@ def main():
         choice = input("Choose an option(1-4): ")
         time.sleep(2)
 
-
+        #conditional operator to call upon the other functions 
+        
 
         if choice == '1':
             refer_to_hospital(name)
