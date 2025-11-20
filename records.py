@@ -36,7 +36,5 @@ def review_medical_record(user_name):
 
     conn.close()
 
-
-
-print("\nReturning to the main menu in a few secondss...")
-time.sleep(7) 
+    print("\nReturning to the main menu in a few secondss...")
+    time.sleep(7) 

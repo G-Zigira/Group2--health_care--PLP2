@@ -41,7 +41,5 @@ def send_emergency_alert(user_name):
 
 
     conn.close()
-    
-
-print("\nReturning to the main menu ina few seconds...")
-time.sleep(7) 
+    print("\nReturning to the main menu ina few seconds...")
+    time.sleep(7) 
