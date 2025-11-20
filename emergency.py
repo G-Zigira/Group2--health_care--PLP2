@@ -9,7 +9,7 @@ def send_emergency_alert(user_name):
     cursor = conn.cursor()
 
 
-# Get the user's street number from the database
+    # Get the user's street number from the database
     cursor.execute('SELECT street_number FROM users WHERE name = ?', (user_name,))
     result = cursor.fetchone()
 
@@ -22,7 +22,7 @@ def send_emergency_alert(user_name):
     user_street = result[0] if result[0] is not None else 0 # Default to 0 if street_number is None
 
 
-# Fetch all hospital from the database
+    # Fetch all hospital from the database
     cursor.execute('''SELECT name, address, phone, street_number FROM hospitals''')
     hospitals = cursor.fetchall()
 
@@ -33,15 +33,15 @@ def send_emergency_alert(user_name):
         return
 
 
-# Find the nearest hospital based on street number  
+    # Find the nearest hospital based on street number  
     nearest = min(hospitals, key=lambda h: abs(h[3] - user_street))
 
-# Display emergency hospital information  
+    # Display emergency hospital information  
     print("\n---- Emergency Hospital RESPONSE Contact ----")
     time.sleep(3)
     print(f"THE Nearest Hospital: {nearest[0]}\nAddress: {nearest[1]}\nCall: {nearest[2]}")
 
-# Close connection and return to main menu
+    # Close connection and return to main menu
     conn.close()
     print("\nReturning to the main menu ina few seconds...")
     time.sleep(7) 
