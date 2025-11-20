@@ -17,7 +17,7 @@ class ClinicoApp:
         self.chronic = None
 
     def collect_user_info(self):
-        """handles the input at the start and saving new user information"""
+        """handles the input at the start and saving the information of the new user """
         print("\n_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
         print("Your own Personalised Health direction giver\n")
 
