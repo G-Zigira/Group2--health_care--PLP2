@@ -1,3 +1,4 @@
+#this file handles database initialisation
 import sqlite3
 
 
