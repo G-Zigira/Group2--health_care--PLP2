@@ -56,8 +56,9 @@ def init_db():
         cursor.executemany('INSERT INTO hospitals (name, address, phone, street_number) VALUES (?, ?, ?, ?)', hospitals)
 
 
+
     conn.commit()
-conn.close()
+    conn.close()
 
 
 
