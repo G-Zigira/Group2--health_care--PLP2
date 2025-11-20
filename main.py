@@ -23,11 +23,11 @@ class ClinicoApp:
         print("\n_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
         print("Your own Personalised Health direction giver\n")
         
-        print("Are you a:")
+        print("choose your selected role:")
         print("1. Patient")
         print("2. Doctor")
 
-        role = input("Enter choice (1 or 2): ")
+        role = input("Enter your choice (1 or 2): ")
 
         if role == "2":
             hospitals = [
@@ -46,11 +46,11 @@ class ClinicoApp:
 
             pin = input("Enter 3-digit doctor PIN: ")
 
-            if pin == "445":  
+            if pin == "357":  
                 doctor_menu(hospital_name)
                 sys.exit()        
             else:
-                print("Incorrect PIN. Exiting.")
+                print("the PINyou entered is incorrect, leaving clinico")
                 sys.exit()
 
         self.name = input("Please enter your full names: ")
@@ -83,8 +83,8 @@ class ClinicoApp:
             print("\n---------MAIN MENU---------")
             print("\n____Services in Clinico____")
             print("1. Refer to a hospital")
-            print("2. Review Medical record")
-            print("3. Send an Emergency alert")
+            print("2. Show personal nedical record")
+            print("3. Send an emergency alert")
             print("4. Exit")
 
             choice = input("Choose an option (1-4): ")
@@ -97,10 +97,10 @@ class ClinicoApp:
             elif choice == '3':
                 send_emergency_alert(self.name)
             elif choice == '4':
-                print("Exiting the Clinico APP. Thank you!")
+                print("Exiting the Clinico APP thank you")
                 break
             else:
-                print("Invalid option, please try again.")
+                print("The option you picked is invalid please try again ")
 
     def run(self):
         """Runs the complete application."""

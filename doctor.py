@@ -4,10 +4,10 @@ from db import get_connection
 
 def doctor_menu(hospital_name):
     while True:
-        print("\n------ DOCTOR MENU ------")
-        print("1. Review patient records")
-        print("2. View hospital rating")
-        print("3. Exit to Clinico")
+        print("\n-------DOCTOR MENU-------")
+        print("1. Review the patient records")
+        print("2. View the hospital rating")
+        print("3. Exit Clinico")
 
         choice = input("Choose an option (1-3): ")
 
@@ -16,11 +16,11 @@ def doctor_menu(hospital_name):
         elif choice == "2":
             view_hospital_rating(hospital_name)
         elif choice == "3":
-            print("Exiting Doctor Menu...")
+            print("Exiting the Clinico app thankyou")
             time.sleep(3)
             break
         else:
-            print("Invalid choice. Try again.")
+            print("the input you entered is invalid please try again.")
             
 
 def review_patient_records(hospital_name):
@@ -34,10 +34,10 @@ def review_patient_records(hospital_name):
 
     print(f"\nPatients that came to {hospital_name}:")
     if not rows:
-        print("No patient records found.")
+        print("No patient records were found")
     else:
         for patient, issue in rows:
-            print(f"- {patient} | Reason: {issue}")
+            print(f"- {patient} | Reason for visit: {issue}")
 
 
 def view_hospital_rating(hospital_name):
@@ -55,6 +55,6 @@ def view_hospital_rating(hospital_name):
     conn.close()
 
     if avg_rating:
-        print(f"\nRating for {hospital_name}: {avg_rating:.1f} ⭐")
+        print(f"\nThe rating for {hospital_name}: {avg_rating:.1f} ⭐")
     else:
-        print(f"\nRating for {hospital_name}: No reviews yet")
+        print(f"\nThe rating for {hospital_name}: there are no reviews at the moment")
