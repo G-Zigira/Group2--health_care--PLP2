@@ -18,7 +18,7 @@ class ClinicoApp:
 
     def collect_user_info(self):
         """handles the input at the start and saving new user information"""
-        print("_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
+        print("\n_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
         print("Your own Personalised Health direction giver\n")
 
         self.name = input("Please enter your full names: ")
