@@ -1,8 +1,10 @@
 # this is the main program that calls all the other functions
 import sqlite3
 import time
+import sys
 
 from db import init_db, get_connection
+from doctor import doctor_menu
 from hospitals import refer_to_hospital
 from records import review_medical_record
 from emergency import send_emergency_alert
@@ -20,6 +22,36 @@ class ClinicoApp:
         """handles the input at the start and saving the information of the new user """
         print("\n_+_+_+_+_+_+ Welcome to Clinico +_+_+_+_+_+_\n")
         print("Your own Personalised Health direction giver\n")
+        
+        print("Are you a:")
+        print("1. Patient")
+        print("2. Doctor")
+
+        role = input("Enter choice (1 or 2): ")
+
+        if role == "2":
+            hospitals = [
+                 "Kigali General Hospital",
+                "Rwanda Medical Center",
+                "Nyamirambo Health Clinic",
+                "CHUK Teaching Hospital"
+            ]
+
+            print("\nSelect hospital:")
+            for i, h in enumerate(hospitals, start=1):
+                print(f"{i}. {h}")
+
+            h_choice = int(input("Choose hospital (1-4): "))
+            hospital_name = hospitals[h_choice - 1]
+
+            pin = input("Enter 3-digit doctor PIN: ")
+
+            if pin == "445":  
+                doctor_menu(hospital_name)
+                sys.exit()        
+            else:
+                print("Incorrect PIN. Exiting.")
+                sys.exit()
 
         self.name = input("Please enter your full names: ")
 

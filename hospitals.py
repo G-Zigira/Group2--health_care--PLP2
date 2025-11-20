@@ -70,5 +70,25 @@ def refer_to_hospital(user_name):
     conn.commit()
     conn.close()
 
+def get_hospital_visits(hospital_name):
+    
+    """
+    Return a list of all patients who visited a specific hospital.
+    Each record includes: user name, street number, chronic illness, and medical issue.
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        SELECT v.user_name, u.street_number, u.chronic_illness, v.medical_issue
+        FROM visits v
+        LEFT JOIN users u ON v.user_name = u.name
+        WHERE v.hospital_name = ?
+    ''', (hospital_name,))
+
+    visits = cursor.fetchall()
+
+    conn.close()
+    return visits
 
 time.sleep(7)
