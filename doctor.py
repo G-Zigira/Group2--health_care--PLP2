@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import time
 from db import get_connection
 

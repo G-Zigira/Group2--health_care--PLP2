@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Used for pauses to make output more readable
 import time
 # Import functions to connect to the database

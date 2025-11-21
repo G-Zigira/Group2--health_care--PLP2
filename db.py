@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #this file handles database initialisation
 import sqlite3
 

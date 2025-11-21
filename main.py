@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # this is the main program that calls all the other functions
 import sqlite3
 import time
