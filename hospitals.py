@@ -37,7 +37,7 @@ def refer_to_hospital(user_name):
     cursor.execute('''SELECT h.id, h.name, h.address, h.phone, IFNULL(AVG(r.rating), 0)
                       FROM hospitals h LEFT JOIN reviews r ON h.id = r.hospital_id
                       GROUP BY h.id''')
-
+    # fetch the data then loop throught and print the rating
     hospitals = cursor.fetchall()
     for i, (hid, name, address, phone, avg_rating) in enumerate(hospitals, 1):
         print(f"{i}. {name} - {address} (⭐ {avg_rating:.1f})")
@@ -71,8 +71,8 @@ def refer_to_hospital(user_name):
     conn.commit()
     conn.close()
 
+
 def get_hospital_visits(hospital_name):
-    
     """
     Return a list of all patients who visited a specific hospital.
     Each record includes: user name, street number, chronic illness, and medical issue.
@@ -80,6 +80,7 @@ def get_hospital_visits(hospital_name):
     conn = get_connection()
     cursor = conn.cursor()
 
+    # select the data from two table using left join
     cursor.execute('''
         SELECT v.user_name, u.street_number, u.chronic_illness, v.medical_issue
         FROM visits v
@@ -91,5 +92,6 @@ def get_hospital_visits(hospital_name):
 
     conn.close()
     return visits
+
 
 time.sleep(7)
