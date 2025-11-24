@@ -56,11 +56,13 @@ class ClinicoApp:
 
         self.name = input("Please enter your full names: ")
 
-        try:
-            self.street_number = int(input("Enter your street number (eg: 44, 23): "))
-        except ValueError:
-            print("Your input was invalid, so by default your street number will be 0.")
-            self.street_number = 0
+        while True:
+            street_input = input("Enter your street number (eg: 44, 23): ")
+            if street_input.isdigit():
+                self.street_number = int(street_input)
+                break
+            else:
+                print("Your input is invalid please enter an integer for your streetnumber")
 
         self.chronic = input(
             "Do you have any chronic illnesses? (eg: asthma, myopia). "
